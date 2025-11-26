@@ -11,9 +11,9 @@ A collection of useful python scripts
 Language                     files          blank        comment           code
 -------------------------------------------------------------------------------
 Python                           7             75             44            199
-Markdown                         1              7              4              4
+Markdown                         1              8              4             26
 -------------------------------------------------------------------------------
-SUM:                             8             82             48            203
+SUM:                             8             83             48            225
 -------------------------------------------------------------------------------
 ```
 <!-- CODE_STATISTICS_END -->
@@ -23,7 +23,7 @@ SUM:                             8             82             48            203
 ### Project Structure
 
 ```
-scripts
+python_scripts
 ├── bullets
 ├── csnip
 ├── cwd
