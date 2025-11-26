@@ -1,0 +1,26 @@
+#!/usr/bin/env python
+
+# ================================================================================
+# =                                    RCLIP                                     =
+# ================================================================================
+
+# Monitors clipboard and prints new contents when it changes.
+
+import time
+
+import pyperclip
+
+print("Recording clipboard... (Ctrl-C to stop)")
+previous_content = pyperclip.paste()
+try:
+    while True:
+        content = pyperclip.paste()
+
+        if content != previous_content:
+            # If it's different from the previous, print it:
+            print(content)
+            previous_content = content
+
+        time.sleep(0.01)  # Pause to avoid hogging the CPU.
+except KeyboardInterrupt:
+    pass

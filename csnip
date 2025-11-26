@@ -1,0 +1,56 @@
+#!/usr/bin/env python
+
+# ================================================================================
+# =                                    CSNIP                                     =
+# ================================================================================
+
+# Appends snippet from clipboard to specified snippet file.
+
+import json
+import re
+from pathlib import Path
+
+import pyperclip
+
+print("Snippet will be taken from the system clipboard.")
+
+# Get snippet language
+language = input("Enter the snippets language: ").lower()
+path = Path(f"/home/master/.config/nvim/snippets/{language}.json")
+
+# Get new snippet
+name = input("Enter the snippets name: ")
+prefix = input("Enter the snippets prefix: ")
+lines = pyperclip.paste().splitlines()
+
+
+# Convert <<placeholder>> to ${n:placeholder}
+def convert_placeholders(lines):
+    pattern = re.compile(r"<<(.*?)>>")
+    body = []
+    counter = 1
+
+    def replacer(match):
+        nonlocal counter
+        result = f"${{{counter}:{match.group(1)}}}"
+        counter += 1
+        return result
+
+    for line in lines:
+        body.append(pattern.sub(replacer, line))
+
+    return body
+
+
+body = convert_placeholders(lines)
+
+# Load existing snippets or start empty
+snippets = json.loads(path.read_text()) if path.exists() else {}
+
+# Add the new snippet
+snippets[name] = {"prefix": prefix, "body": body}
+
+# Write to file
+path.write_text(json.dumps(snippets, indent=2))
+
+print(f"\nSnippet '{name}' added to '{language}.json'")
