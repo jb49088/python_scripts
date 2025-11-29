@@ -4,7 +4,7 @@
 # =                                   QPACMAN                                    =
 # ================================================================================
 
-# Opens pacman search results in the browser from command line arguments
+# Opens pacman search results in the browser from arguments
 
 import sys
 import webbrowser

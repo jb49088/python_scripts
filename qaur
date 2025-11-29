@@ -4,7 +4,7 @@
 # =                                     QAUR                                     =
 # ================================================================================
 
-# Opens aur search results in the browser from command line arguments
+# Opens AUR search results in the browser from arguments
 
 import sys
 import webbrowser

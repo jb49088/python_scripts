@@ -4,7 +4,7 @@
 # =                                    QPYPI                                     =
 # ================================================================================
 
-# Opens PyPI search results in the browser from command line arguments
+# Opens PyPI search results in the browser from arguments
 
 import sys
 import webbrowser
