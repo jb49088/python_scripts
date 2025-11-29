@@ -1,0 +1,12 @@
+#!/usr/bin/env python
+
+# ================================================================================
+# =                                  SEARCHPYPI                                  =
+# ================================================================================
+
+# Opens PyPI search results in the browser from command line arguments
+
+import sys
+import webbrowser
+
+webbrowser.open("https://pypi.org/search/?q=" + " ".join(sys.argv[1:]))
