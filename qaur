@@ -1,0 +1,12 @@
+#!/usr/bin/env python
+
+# ================================================================================
+# =                                     QAUR                                     =
+# ================================================================================
+
+# Opens aur search results in the browser from command line arguments
+
+import sys
+import webbrowser
+
+webbrowser.open("https://aur.archlinux.org/packages/?K=" + " ".join(sys.argv[1:]))
