@@ -4,9 +4,9 @@
 # =                                   QPACMAN                                    =
 # ================================================================================
 
-# Opens pacman search results in the browser from arguments
+# Opens pacman package search results in the browser from arguments
 
 import sys
 import webbrowser
 
-webbrowser.open("https://archlinux.org/packages/?q=" + " ".join(sys.argv[1:]))
+webbrowser.open(f"https://archlinux.org/packages/?q={' '.join(sys.argv[1:])}")

@@ -4,9 +4,9 @@
 # =                                     QAUR                                     =
 # ================================================================================
 
-# Opens AUR search results in the browser from arguments
+# Opens AUR package search results in the browser from arguments
 
 import sys
 import webbrowser
 
-webbrowser.open("https://aur.archlinux.org/packages/?K=" + " ".join(sys.argv[1:]))
+webbrowser.open(f"https://aur.archlinux.org/packages/?K={' '.join(sys.argv[1:])}")

@@ -10,5 +10,5 @@ import sys
 import webbrowser
 
 webbrowser.open(
-    "https://github.com/search/?q=" + " ".join(sys.argv[1:]) + "&type=repositories"
+    f"https://github.com/search/?q={' '.join(sys.argv[1:])}&type=repositories"
 )
