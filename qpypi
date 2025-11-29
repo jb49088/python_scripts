@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 # ================================================================================
-# =                                  SEARCHPYPI                                  =
+# =                                    QPYPI                                     =
 # ================================================================================
 
 # Opens PyPI search results in the browser from command line arguments
