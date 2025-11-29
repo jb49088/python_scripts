@@ -1,0 +1,12 @@
+#!/usr/bin/env python
+
+# ================================================================================
+# =                                   QPACMAN                                    =
+# ================================================================================
+
+# Opens pacman search results in the browser from command line arguments
+
+import sys
+import webbrowser
+
+webbrowser.open("https://archlinux.org/packages/?q=" + " ".join(sys.argv[1:]))
