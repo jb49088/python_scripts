@@ -19,8 +19,7 @@ def build_id_to_name_mapping() -> dict[str, str]:
 
     id_to_name = {}
 
-    for item in r.json()["data"]:
-        id_to_name[item["id"]] = item["i18n"]["en"]["name"]
+    id_to_name = {item["id"]: item["i18n"]["en"]["name"] for item in r.json()["data"]}
 
     return id_to_name
 
@@ -30,10 +29,7 @@ def gather_user_listings(user: str) -> list[str]:
     r = requests.get(f"https://api.warframe.market/v2/orders/user/{user.lower()}")
     r.raise_for_status()
 
-    listings = []
-
-    for item in r.json()["data"]:
-        listings.append(item["itemId"])
+    listings = [item["itemId"] for item in r.json()["data"]]
 
     return listings
 
@@ -43,18 +39,14 @@ def convert_ids_to_item_names(
     listings: list[str],
 ) -> list[str]:
     """Convert listing IDs to in-game item names, alphabetically sorted."""
-    items = []
-    for listing in listings:
-        items.append(id_to_name[listing])
+    items = [id_to_name[listing] for listing in listings]
 
     return sorted(items)
 
 
 def format_items(items: list[str]) -> list[str]:
     """Format items with surrounding brackets."""
-    formatted_items = []
-    for listing in items:
-        formatted_items.append("[" + listing + "]")
+    formatted_items = ["[" + listing + "]" for listing in items]
 
     return formatted_items
 
