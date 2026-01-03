@@ -6,8 +6,6 @@
 
 # Copies a users warframe.market listings to clipboard ready for in game pasting.
 
-import sys
-
 import pyperclip
 import requests
 
@@ -89,16 +87,10 @@ def copy_items(chunks: list[str]) -> None:
 def main() -> None:
     """Main entry point."""
     id_to_name = build_id_to_name_mapping()
-
-    user_id = sys.argv[1] if len(sys.argv) > 1 else "bhwsg"
-    listings = gather_user_listings(user_id)
-
+    listings = gather_user_listings("bhwsg")
     items = convert_ids_to_item_names(id_to_name, listings)
-
     formatted_items = format_items(items)
-
     chunks = chunk_items(formatted_items)
-
     copy_items(chunks)
 
 
