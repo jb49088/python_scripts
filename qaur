@@ -6,7 +6,13 @@
 
 # Opens AUR package search results in the browser from arguments
 
+import subprocess
 import sys
-import webbrowser
 
-webbrowser.open(f"https://aur.archlinux.org/packages/?K={' '.join(sys.argv[1:])}")
+query = " ".join(sys.argv[1:0])
+subprocess.run(
+    [
+        "/mnt/c/Program Files/Mozilla Firefox/firefox.exe",
+        f"https://aur.archlinux.org/packages/?K={query}",
+    ]
+)

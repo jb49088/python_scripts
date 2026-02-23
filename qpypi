@@ -6,7 +6,13 @@
 
 # Opens PyPI package search results in the browser from arguments
 
+import subprocess
 import sys
-import webbrowser
 
-webbrowser.open(f"https://pypi.org/search/?q={' '.join(sys.argv[1:])}")
+query = " ".join(sys.argv[1:])
+subprocess.run(
+    [
+        "/mnt/c/Program Files/Mozilla Firefox/firefox.exe",
+        f"https://pypi.org/search/?q={query}",
+    ]
+)
