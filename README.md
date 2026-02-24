@@ -10,10 +10,10 @@ A collection of useful python scripts
 -------------------------------------------------------------------------------
 Language                     files          blank        comment           code
 -------------------------------------------------------------------------------
-Python                          12             97             64            245
+Python                          13            101             68            255
 Markdown                         1              8              4             31
 -------------------------------------------------------------------------------
-SUM:                            13            105             68            276
+SUM:                            14            109             72            286
 -------------------------------------------------------------------------------
 ```
 <!-- CODE_STATISTICS_END -->
@@ -28,6 +28,7 @@ python_scripts
 ├── csnip
 ├── cwd
 ├── qaur
+├── qclaude
 ├── qgithub
 ├── qpacman
 ├── qpypi
@@ -38,6 +39,6 @@ python_scripts
 ├── wcount
 └── zbak
 
-1 directory, 13 files
+1 directory, 14 files
 ```
 <!-- PROJECT_STRUCTURE_END -->
