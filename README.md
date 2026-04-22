@@ -1,6 +1,6 @@
 ### python_scripts
 
-A collection of useful python scripts
+Python based personal productivity tools and workflow automation
 
 <!-- CODE_STATISTICS_START -->
 
@@ -11,9 +11,9 @@ A collection of useful python scripts
 Language                     files          blank        comment           code
 -------------------------------------------------------------------------------
 Python                          14            105             72            265
-Markdown                         1              8              4             32
+Markdown                         1              8              4             33
 -------------------------------------------------------------------------------
-SUM:                            15            113             76            297
+SUM:                            15            113             76            298
 -------------------------------------------------------------------------------
 ```
 <!-- CODE_STATISTICS_END -->
