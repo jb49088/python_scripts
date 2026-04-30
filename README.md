@@ -10,10 +10,10 @@ Python based personal productivity tools and workflow automation
 -------------------------------------------------------------------------------
 Language                     files          blank        comment           code
 -------------------------------------------------------------------------------
-Python                          14            105             72            265
+Python                           8             81             48            205
 Markdown                         1              8              4             33
 -------------------------------------------------------------------------------
-SUM:                            15            113             76            298
+SUM:                             9             89             52            238
 -------------------------------------------------------------------------------
 ```
 <!-- CODE_STATISTICS_END -->
@@ -27,12 +27,6 @@ python_scripts
 ├── bullets
 ├── csnip
 ├── cwd
-├── qaur
-├── qclaude
-├── qgithub
-├── qgoogle
-├── qpacman
-├── qpypi
 ├── rclip
 ├── README.md
 ├── showmap
@@ -40,6 +34,6 @@ python_scripts
 ├── wcount
 └── zbak
 
-1 directory, 15 files
+1 directory, 9 files
 ```
 <!-- PROJECT_STRUCTURE_END -->
