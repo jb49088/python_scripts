@@ -1,0 +1,93 @@
+#!/usr/bin/env python
+
+# ================================================================================
+# =                                   BAKPURGE                                   =
+# ================================================================================
+
+import json
+import os
+import subprocess
+
+
+def get_machines() -> tuple:
+    parser_output = subprocess.run(
+        [
+            "python3",
+            f"{os.environ['HOME']}/parsers/inventory.py",
+            "machines",
+        ],
+        capture_output=True,
+        text=True,
+        check=True,
+    )
+
+    return tuple(parser_output.stdout.split())
+
+
+def get_valid_host_tags() -> set[tuple]:
+    parser_output = subprocess.run(
+        [
+            "python3",
+            f"{os.environ['HOME']}/parsers/inventory.py",
+            "machine_tags",
+        ],
+        capture_output=True,
+        text=True,
+        check=True,
+    )
+
+    return {tuple(line.split()) for line in parser_output.stdout.splitlines()}
+
+
+def get_snapshot_data(repository: str) -> list[dict]:
+    restic_output = subprocess.run(
+        ["restic", "-r", os.environ[repository], "snapshots", "--json"],
+        capture_output=True,
+        text=True,
+        check=True,
+    )
+
+    return json.loads(restic_output.stdout)
+
+
+def purge_backups(
+    repository: str,
+    machines: tuple,
+    valid_host_tags: set[tuple],
+    snapshot_data: list[dict],
+) -> None:
+    ids = []
+
+    for snapshot in snapshot_data:
+        hostname = snapshot["hostname"]
+        tag = snapshot["tags"][0]  # 1 tag per backup is a contraint
+
+        if (hostname, tag) not in valid_host_tags and hostname in machines:
+            ids.append(snapshot["id"])
+
+    subprocess.run(
+        [
+            "restic",
+            "-r",
+            os.environ[repository],
+            "forget",
+            "--prune",
+            *ids,
+        ],
+        check=True,
+    )
+
+
+def main():
+    repositories = ("R1", "R2")
+
+    machines = get_machines()
+    valid_host_tags = get_valid_host_tags()
+
+    for repository in repositories:
+        snapshot_data = get_snapshot_data(repository)
+        purge_backups(repository, machines, valid_host_tags, snapshot_data)
+
+
+if __name__ == "__main__":
+    main()
